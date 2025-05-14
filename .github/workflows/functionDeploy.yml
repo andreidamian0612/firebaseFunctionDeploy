@@ -29,3 +29,4 @@ jobs:
           args: deploy --only functions --project=damatest-f8061
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          TARGET_BUCKET: ${{ vars.TARGET_BUCKET }}
