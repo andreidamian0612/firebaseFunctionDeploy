@@ -17,7 +17,7 @@ if (!process.env.TARGET_BUCKET) {
 admin.initializeApp();
 console.log("Firebase admin initialized.");
 
-export const damaFunctionUpdate=onCall(
+export const damaProjectFunction=onCall(
   {
     enforceAppCheck: true,
     secrets: [],

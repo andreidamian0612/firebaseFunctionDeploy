@@ -1,0 +1,31 @@
+aname: Deploy Firebase Functions on push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22' # Adjust based on your functions runtime
+
+      - name: Install dependencies
+        run: |
+          cd functions
+          npm install
+
+      - name: Deploy Firebase Functions
+        uses: w9jds/firebase-action@v13.0.2
+        with:
+          args: deploy --only functions --project=damatest-f8061
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
