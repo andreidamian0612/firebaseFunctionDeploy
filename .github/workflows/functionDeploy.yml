@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: '20' # Adjust based on your functions runtime
 
+      - name: Create env file
+        run: |
+          cd functions
+          echo "TARGET_BUCKET=${{ vars.TARGET_BUCKET }}" > .env
+
       - name: Install dependencies
         run: |
           cd functions
@@ -28,5 +33,4 @@ jobs:
         with:
           args: deploy --only functions --project=damatest-f8061
         env:
-          TARGET_BUCKET: ${{ vars.TARGET_BUCKET }}
-          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}          
