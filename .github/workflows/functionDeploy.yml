@@ -36,4 +36,4 @@ jobs:
         run: |
           echo '${{ secrets.GCP_SA_KEY }}' > $HOME/gcp-key.json
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/gcp-key.json"
-          firebase deploy --only functions --project=damatest-f8061
+          firebase deploy --only functions:lastOne --project=damatest-f8061
